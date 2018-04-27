@@ -36,24 +36,30 @@
     <h1 class="title">Register
       <div class="close" (click)="addclasscss(false)"></div>
     </h1>
-    <form>
+    <form (ngSubmit)="register()" [formGroup]="loginForm">
       <div class="input-container" >
-        <input type="#{type}" id="ruserid" required="required" />
-        <label for="#{label}">Username</label>
+        <input type="text" id="ruserid" formControlName="username" class="validate"  autocomplete="off"
+         [class.invalid]="loginForm.controls['username'].touched && !loginForm.controls['username'].valid" required="required" />
+        <label for="username" [class.active]="user.username"
+               data-error="Username is requir" >Username</label>
         <div class="bar"></div>
       </div>
       <div class="input-container" >
-        <input type="#{type}" id="rpassword" required="required" />
-        <label for="#{label}">Password</label>
+        <input type="password" id="rpassword" formControlName="password" class="validate"  autocomplete="off"
+         [class.invalid]="loginForm.controls['password'].touched && !loginForm.controls['password'].valid" required="required" />
+        <label for="password" [class.active]="user.password"
+               data-error="Password is requir" >Password</label>
         <div class="bar"></div>
       </div>
       <div class="input-container" >
-        <input type="#{type}" id="rrpassword" required="required" />
-        <label for="#{label}">Repeat Password</label>
+        <input type="password" id="rrpassword" formControlName="repassword" class="validate"  autocomplete="off"
+         [class.invalid]="loginForm.controls['repassword'].touched && !loginForm.controls['repassword'].valid" required="required" />
+        <label for="repassword" [class.active]="user.repassword"
+               data-error="Repeat Password is requir">Repeat Password</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button [disabled]="loading"><span>Submit</span></button>
+        <button type="submit"><span>Submit</span></button>
 
       </div>
     </form>

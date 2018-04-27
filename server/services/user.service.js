@@ -24,9 +24,9 @@ function authenticate(username, password) {
     db.users.findOne({ username: username }, function (err, user) {
         //err={name:'',message:''};
         if (err) return deferred.reject(err.name + ': ' + err.message);
-        var result=(user && bcrypt.compareSync(password, user.hash));
-        //if (user && bcrypt.compareSync(password, user.hash))
-        if(!result) {
+       // var result=(user && bcrypt.compareSync(password, user.hash));
+        if (user && bcrypt.compareSync(password, user.hash)){
+        //if(!result) {
             // authentication successful
             deferred.resolve({
                 _id: user._id,

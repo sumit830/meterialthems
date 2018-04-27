@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Router,ActivatedRoute } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService, AuthenticationService } from '../_services/index';
-import { BasicValidators } from '../_services/basic-validators';
-import { User } from '../_models/index';
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AlertService, AuthenticationService,UserService } from "../_services/index";
+import { BasicValidators } from "../_services/basic-validators";
+import { User } from "../_models/index";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -11,46 +11,59 @@ import { User } from '../_models/index';
 })
 export class LoginComponent implements OnInit {
   shouldShow: any;
-  isDisabled: any;  
-  returnUrl:String;  
+  isDisabled: any;
+  returnUrl: String;
   loginForm: FormGroup;
   user: User = new User();
   constructor(
-      formBuilder: FormBuilder,
+    formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService:AuthenticationService,
-    private route:ActivatedRoute,
-   private alertService:AlertService
+    private authenticationService: AuthenticationService,
+    private route: ActivatedRoute,
+    private alertService: AlertService,
+    private userService:UserService
   ) {
     this.loginForm = formBuilder.group({
-      username: ['', [
-        Validators.required,
-        Validators.minLength(5)
-      ]],
-      password:['',[Validators.required,Validators.minLength(5)]]
+      username: ["", [Validators.required, Validators.minLength(5)]],
+      password: ["", [Validators.required, Validators.minLength(5)]],
+      repassword: ["", [Validators.required, Validators.minLength(5)]]
     });
   }
 
   ngOnInit() {
-       this.authenticationService.logout();
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.authenticationService.logout();
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
   }
-  validate() {      
-        this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.username)
-            .subscribe(
-                data => {
-                    //this.router.navigate([this.returnUrl]);
-                    this.router.navigate(["/", "dashboard"]);
-                },
-                error => {
-                    this.alertService.error(error);                   
-                    
-                });
+  validate() {
+    this.authenticationService
+      .login(this.loginForm.value.username, this.loginForm.value.username)
+      .subscribe(
+        data => {
+          //this.router.navigate([this.returnUrl]);
+          this.router.navigate(["/", "dashboard"]);
+        },
+        error => {
+          this.alertService.error(error);
+        }
+      );
+  }
+  register() {
+    this.userService.create(this.loginForm.value)
+      .subscribe(
+        data => {
+         this.alertService.error('Data insert susessful');
+          this.loginForm.reset();
+          // this.shouldShow = true;
+          // this.isDisabled =true;
+        },
+        error => {
+          this.alertService.error(error);
+        }
+      );
   }
   addclasscss(n) {
     this.shouldShow = n;
     this.isDisabled = n;
   }
-  
 }
