@@ -1,0 +1,61 @@
+<!-- Mixins-->
+<!-- Pen Title-->
+<div class="pen-title">
+  <h1>ICP2 Login Form</h1>
+  <!-- <span>Pen <i class='fa fa-code'></i> by <a href='http://andytran.me'>Andy Tran</a></span> -->
+</div>
+<!-- <div class="rerun"><a href="">Rerun Pen</a></div> [(ngModel)]="user.password"-->
+<div class="container" [ngClass]="{active: shouldShow, disabled: isDisabled}">
+   <div class="card"></div> 
+  <div class="card">
+    <h1 class="title">Login</h1>
+    <form  (ngSubmit)="validate()" [formGroup]="loginForm">
+      <div class="input-container" >
+        <input type="text" id="username"  formControlName="username" class="validate"  autocomplete="off"
+         [class.invalid]="loginForm.controls['username'].touched && !loginForm.controls['username'].valid" required="required" />
+        <label for="username" [class.active]="user.username"
+               data-error="Username is required and needs to contain at least 5 chars">Username</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="password" id="password" formControlName="password" class="validate" autocomplete="off" 
+         [class.invalid]="loginForm.controls['password'].touched && !loginForm.controls['password'].valid" required="required" />
+        <label for="password" [class.active]="user.password"
+               data-error="Password is required">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button type="submit"><span>Go</span></button>
+      </div>
+      <div class="footer"><a href="#">Forgot your password?</a></div>
+    </form>
+  </div>
+  <div class="card alt">
+    <button type="button" class="toggle" (click)="addclasscss(true)"  ></button>
+     <!-- [routerLink]="['/registartion']" -->
+    <h1 class="title">Register
+      <div class="close" (click)="addclasscss(false)"></div>
+    </h1>
+    <form>
+      <div class="input-container" >
+        <input type="#{type}" id="ruserid" required="required" />
+        <label for="#{label}">Username</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container" >
+        <input type="#{type}" id="rpassword" required="required" />
+        <label for="#{label}">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container" >
+        <input type="#{type}" id="rrpassword" required="required" />
+        <label for="#{label}">Repeat Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button [disabled]="loading"><span>Submit</span></button>
+
+      </div>
+    </form>
+  </div>
+</div>

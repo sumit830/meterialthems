@@ -1,0 +1,5 @@
+﻿{
+    "connectionString": "mongodb://localhost:27017/sumit",
+    "apiUrl": "http://localhost:4000",
+    "secret": "faeb4453e5d14fe6f6d04637f78077c76c73d1b4"
+}
