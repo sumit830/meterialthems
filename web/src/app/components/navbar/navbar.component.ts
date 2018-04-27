@@ -6,6 +6,7 @@ import {
   PathLocationStrategy
 } from "@angular/common";
 import { Router, NavigationEnd } from "@angular/router";
+import {AuthenticationService } from "../../_services/index";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -21,7 +22,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService,
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -92,5 +94,8 @@ export class NavbarComponent implements OnInit {
   }
   isLoggedInhide() {
     return this.isLoggedIn;
+  }
+  islogout(){   
+    this.authenticationService.logout(); 
   }
 }

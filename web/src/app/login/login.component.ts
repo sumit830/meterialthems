@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
   validate() {
     this.authenticationService
-      .login(this.loginForm.value.username, this.loginForm.value.username)
+      .login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
         data => {
           //this.router.navigate([this.returnUrl]);
