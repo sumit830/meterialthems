@@ -9,6 +9,7 @@ export class NotificationsComponent implements OnInit {
 
   constructor() { }
   showNotification(from, align){
+      debugger;
       const type = ['','info','success','warning','danger'];
 
       const color = Math.floor((Math.random() * 4) + 1);

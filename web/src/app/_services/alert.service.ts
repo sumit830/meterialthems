@@ -2,7 +2,7 @@
 import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
-
+declare var $: any;
 @Injectable()
 export class AlertService {
     private subject = new Subject<any>();
@@ -36,4 +36,21 @@ export class AlertService {
     getMessage(): Observable<any> {
         return this.subject.asObservable();
     }
+    showNotification(from, align,color,message) {
+   // const type = ["", "info", "success", "warning", "danger"];
+    $.notify(
+      {
+        icon: "notifications",
+        message:message
+      },
+      {
+        type: color,
+        timer: 4000,
+        placement: {
+          from: from,
+          align: align
+        }
+      }
+    );
+  }
 }

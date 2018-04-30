@@ -31,6 +31,7 @@ import {
   AuthenticationService,
   UserService
 } from "./_services/index";
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 @NgModule({
   declarations: [       
     AppComponent,
@@ -44,7 +45,7 @@ import {
     UpgradeComponent,
     LoginComponent,
     RegistrationComponent,    
-    AlertComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,8 @@ import {
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule,   
+   Ng4LoadingSpinnerModule
   ],
   providers: [
     AuthGuard,
@@ -62,8 +64,10 @@ import {
     ErrorInterceptorProvider,
     AlertService,
     AuthenticationService,
-    UserService
+    UserService,
+   // Ng4LoadingSpinnerService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
