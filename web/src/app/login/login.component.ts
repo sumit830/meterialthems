@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
            this.alertService.showNotification('top','center','danger','Something is wrong');
-          //this.spinnerService.hide();
+          this.spinnerService.hide();
         }
       );
   }
