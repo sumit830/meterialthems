@@ -8,7 +8,7 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 
-import { AppComponent } from "./app.component";
+
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { TableListComponent } from "./table-list/table-list.component";
@@ -22,16 +22,16 @@ import { RegistrationComponent } from "./registration/registration.component";
 
 import { AlertComponent } from "./_directives/index";
 import { AuthGuard } from "./_guards/index";
-import {
-  JwtInterceptorProvider,
-  ErrorInterceptorProvider
-} from "./_helpers/index";
-import {
- AlertService,
-  AuthenticationService,
-  UserService
-} from "./_services/index";
+import {JwtInterceptorProvider,ErrorInterceptorProvider} from "./_helpers/index";
+import { AlertService, AuthenticationService, UserService} from "./_services/index";
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
+import { NgReduxModule } from '@angular-redux/store';
+import { NgRedux, DevToolsExtension } from '@angular-redux/store';
+
+import { rootReducer, IAppState } from './store/index';
+import { UsersActions } from './actions/users.actions'
+import { AppComponent } from "./app.component";
 @NgModule({
   declarations: [       
     AppComponent,
@@ -56,7 +56,8 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     RouterModule,
     AppRoutingModule,
     HttpClientModule,   
-   Ng4LoadingSpinnerModule
+   Ng4LoadingSpinnerModule,
+   NgReduxModule
   ],
   providers: [
     AuthGuard,
@@ -65,9 +66,25 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     AlertService,
     AuthenticationService,
     UserService,
+   UsersActions ,
+   
    // Ng4LoadingSpinnerService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+   constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension
+  ) {
+
+    this.ngRedux.configureStore(
+      rootReducer,
+      {} as IAppState,
+      [ ],
+      [ devTool.isEnabled() ? devTool.enhancer() : f => f]
+    );
+
+  }
+}
 
