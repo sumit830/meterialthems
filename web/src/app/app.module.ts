@@ -30,8 +30,10 @@ import { NgReduxModule } from '@angular-redux/store';
 import { NgRedux, DevToolsExtension } from '@angular-redux/store';
 
 import { rootReducer, IAppState } from './store/index';
-import { UsersActions } from './actions/users.actions'
+import { UsersActions } from './actions/users.actions';
+import { DeviceActions } from './actions/device.actions';
 import { AppComponent } from "./app.component";
+import { DeviceComponent } from './device/device.component';
 @NgModule({
   declarations: [       
     AppComponent,
@@ -45,7 +47,7 @@ import { AppComponent } from "./app.component";
     UpgradeComponent,
     LoginComponent,
     RegistrationComponent,    
-    AlertComponent
+    AlertComponent, DeviceComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { AppComponent } from "./app.component";
     AuthenticationService,
     UserService,
    UsersActions ,
-   
+   DeviceActions
    // Ng4LoadingSpinnerService
   ],
   bootstrap: [AppComponent]

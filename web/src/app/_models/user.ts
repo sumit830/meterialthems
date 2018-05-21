@@ -15,3 +15,10 @@ export enum AlertType {
     Info,
     Warning
 }
+export class Device {
+    devicename: string;
+    imeino: string;
+    devicetype: string;
+    simno: string;
+    descriprtion: string;
+}

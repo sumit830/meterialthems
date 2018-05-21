@@ -13,6 +13,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { DeviceComponent } from './device/device.component';
 const routes: Routes =[
     { path: '',      component: LoginComponent },
     { path: 'registartion',      component: RegistrationComponent },
@@ -23,7 +24,8 @@ const routes: Routes =[
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },     
+    { path: 'device',        component: DeviceComponent },     
+       { path: 'upgrade',        component: UpgradeComponent },    
     { path: '',               redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 

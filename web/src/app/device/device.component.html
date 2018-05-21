@@ -1,0 +1,63 @@
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                    <h4 class="title">Add Devce</h4>
+                    <p class="category">Registration</p>
+                </div>
+                <div class="card-content">
+                    <form (ngSubmit)="register()" [formGroup]="deviceForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Device Name</label>
+                                    <input type="text" class="form-control" formControlName="devicename"  autocomplete="off"
+         [class.invalid]="deviceForm.controls['devicename'].touched && !deviceForm.controls['devicename'].valid" required="required" >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Imei No</label>
+                                    <input type="text" class="form-control" formControlName="imeino"  autocomplete="off"
+         [class.invalid]="deviceForm.controls['imeino'].touched && !deviceForm.controls['imeino'].valid" required="required">
+                                </div>
+                            </div>                            
+                        </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Type</label>
+                                    <input type="text" class="form-control" formControlName="devicetype"  autocomplete="off"
+         [class.invalid]="deviceForm.controls['devicetype'].touched && !deviceForm.controls['devicetype'].valid" required="required">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Sim no</label>
+                                    <input type="text" class="form-control" formControlName="simno"  autocomplete="off"
+         [class.invalid]="deviceForm.controls['simno'].touched && !deviceForm.controls['simno'].valid" required="required" >
+                                </div>
+                            </div>                            
+                        </div>
+                           <div class="row">
+                            <div class="col-md-12">                               
+                                   
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <label class="control-label"> Description.</label>
+                                        <textarea class="form-control" rows="5" formControlName="descriprtion"  autocomplete="off"
+         [class.invalid]="deviceForm.controls['descriprtion'].touched && !deviceForm.controls['descriprtion'].valid" required="required"></textarea>
+                                    </div>                               
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger pull-right">save</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>

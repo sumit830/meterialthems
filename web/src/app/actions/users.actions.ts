@@ -23,7 +23,7 @@ export class UsersActions {
   ) {
   }
 
-  getUsers() {
+  getDevice() {
     this.http.get(`${this.API_URL}/users`)
       .subscribe((res) => {
         // get users
