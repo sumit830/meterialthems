@@ -16,6 +16,7 @@ export enum AlertType {
     Warning
 }
 export class Device {
+    id: string;
     devicename: string;
     imeino: string;
     devicetype: string;

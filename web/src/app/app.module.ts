@@ -34,6 +34,7 @@ import { UsersActions } from './actions/users.actions';
 import { DeviceActions } from './actions/device.actions';
 import { AppComponent } from "./app.component";
 import { DeviceComponent } from './device/device.component';
+import { DynamictableComponent } from './dynamictable/dynamictable.component';
 @NgModule({
   declarations: [       
     AppComponent,
@@ -47,7 +48,7 @@ import { DeviceComponent } from './device/device.component';
     UpgradeComponent,
     LoginComponent,
     RegistrationComponent,    
-    AlertComponent, DeviceComponent
+    AlertComponent, DeviceComponent, DynamictableComponent
   ],
   imports: [
     BrowserModule,

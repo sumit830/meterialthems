@@ -17,13 +17,13 @@ import { DeviceActions } from '../actions/device.actions';
   styleUrls: ['./device.component.scss']
 })
 export class DeviceComponent implements OnInit {
-    @select('Device') public users$: Observable<Device>;
-  @select(['Device', 'active']) active$;
+    @select('device') public device$: Observable<Device>;
+  @select(['device', 'active']) active$;
   activeUser;
   deviceForm: FormGroup;
   Device: Device = new Device();
   constructor(
-    public actions:  DeviceActions,
+    public actions:  DeviceActions,     
     formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -31,7 +31,9 @@ export class DeviceComponent implements OnInit {
     private alertService: AlertService,
     private userService: UserService,
     private spinnerService: Ng4LoadingSpinnerService
+    
   ) { 
+    actions.getDevice();
      this.deviceForm = formBuilder.group({
       devicename: ["", [Validators.required, Validators.minLength(5)]],
       imeino: ["", [Validators.required, Validators.minLength(5)]],
@@ -42,8 +44,8 @@ export class DeviceComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-    debugger;
-    this.actions.getDevice();
+  ngOnInit() {    
+   
+   // this._http.getRequest().subscribe(res=>this.requests=res);
   }
 }
