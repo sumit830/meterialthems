@@ -33,7 +33,7 @@ export class DeviceComponent implements OnInit {
     private spinnerService: Ng4LoadingSpinnerService
     
   ) { 
-    actions.getDevice();
+    
      this.deviceForm = formBuilder.group({
       devicename: ["", [Validators.required, Validators.minLength(5)]],
       imeino: ["", [Validators.required, Validators.minLength(5)]],
@@ -45,7 +45,7 @@ export class DeviceComponent implements OnInit {
   }
 
   ngOnInit() {    
-   
-   // this._http.getRequest().subscribe(res=>this.requests=res);
+   this.actions.getDevice();
+   debugger;
   }
 }

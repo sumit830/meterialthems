@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
 
 import { UsersReducer } from './users.reducer';
-import { Users } from '../_models/newuser';
+import { DeviceReducer } from './device.reducer';
+import { Users,devices } from '../_models/newuser';
 
 export class IAppState {
   users: Users;
+  devices:devices
 };
 
 export const rootReducer = combineReducers<IAppState>({
-  users: UsersReducer,
+  users: UsersReducer,devices:DeviceReducer
 });
 
 

@@ -28,12 +28,13 @@ export class DeviceActions  {
         // get users
         const list = res.json();
         // populate users state (dispatch action)
-        this.ngRedux.dispatch({
+        this.ngRedux.dispatch({          
           type: DeviceActions.DEVICE_GET,
           payload: {
             list
-          }
+          }          
         });
+        debugger;
         // Set the first user as active (dispatch action)
         //return list;
         //this.setActiveUser(list[0].id);
